@@ -59,5 +59,5 @@ $3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\fra
 
 #### Simplify
 
-$3^i T\left(\frac{n}{3^i}\right) + n^5\displaystyle\sum_{k=0} ^{i-1}{(\frac{1}{3})^{4k}}$
+$3^i T\left(\frac{n}{3^i}\right) + n^5\displaystyle\sum_{k=0} ^{i-1}{\left(\frac{1}{3}\right)^{4k}}$
 
