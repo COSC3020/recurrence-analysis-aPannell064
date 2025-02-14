@@ -27,7 +27,7 @@ function mystery(n) {
 }
 ```
 
-### Recurrance Relation
+### Recurrence Relation
 
 At the beginning of the function, there is a check for the base case ($n \le 1$). This just
 causes a return statement, meaning $T(1) = 1$ for $n \le 1$
@@ -40,9 +40,9 @@ increment the previosuly initialized variable, which does not affect the asympto
 there is another recursive call with a value of n/3. Therefore, ignoring constants, when n is greater 
 than 1, we have:
 
- $T(n) = T(\frac{n}{3}) + T(\frac{n}{3}) + n^2 \cdot n \cdot n^2 + T(\frac{n}{3}) = 3T(\frac{n}{3}) + n^5$
+$T(n) = T(\frac{n}{3}) + T(\frac{n}{3}) + n^2 \cdot n \cdot n^2 + T(\frac{n}{3}) = 3T(\frac{n}{3}) + n^5$
 
- This gives us a final recurrance relation of:
+This gives us a final recurrence relation of:
 
 $$ T(n) =
     \begin{cases}
@@ -50,3 +50,9 @@ $$ T(n) =
         3 T\left(\frac{n}{3}\right) + n^5 & n > 1
     \end{cases}
 $$
+
+### Time Complexity
+
+####Expand the relation:
+
+$3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\frac{n}{3}\right)^5) = 3^2 T\left(\frac{n}{3^2}\right) + \left(\frac{n^5}{3^4}\right)$
