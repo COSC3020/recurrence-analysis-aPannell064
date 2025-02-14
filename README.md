@@ -27,6 +27,26 @@ function mystery(n) {
 }
 ```
 
-Add your answer to this markdown file. [This
-page](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
-might help with the notation for mathematical expressions.
+### Recurrance Relation
+
+At the beginning of the function, there is a check for the base case ($n \le 1$). This just
+causes a return statement, meaning $T(1) = 1$ for $n \le 1$
+
+When n is greater than 1, the function calls itself with n/3. It declares and intiializes a variable
+to 0, which doesn't affect the asymptotic complexity, then makes another call to itself with n/3. Next, 
+there are three nested for loops. The first iterates by 1 from 0 to $n^2$. The next loop iterates by 1 
+from 0 to $n$. The inner-most loop iterates by 1 from 0 to $n^2$. The only thing this loop does is 
+increment the previosuly initialized variable, which does not affect the asymptotic complexity. Finally 
+there is another recursive call with a value of n/3. Therefore, ignoring constants, when n is greater 
+than 1, we have:
+
+ $T(n) = T(\frac{n}{3}) + T(\frac{n}{3}) + n^2 \cdot n \cdot n^2 + T(\frac{n}{3}) = 3T(\frac{n}{3}) + n^5$
+
+ This gives us a final recurrance relation of:
+
+ $$ T(n) =
+    \begin{cases}
+        1 & n \leq 1\\
+        T(\frac{n}{13}) + 5 & n > 1
+    \end{cases}
+$$
