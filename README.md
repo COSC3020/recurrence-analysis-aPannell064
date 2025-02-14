@@ -55,4 +55,4 @@ $$
 
 ####Expand the relation:
 
-$3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\frac{n}{3}\right)^5) = 3^2 T\left(\frac{n}{3^2}\right) + \left(\frac{n^5}{3^4}\right)$
+$3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\frac{n}{3}\right)^5) + n^5 = 3^2 T\left(\frac{n}{3^2}\right) + \left(\frac{n^5}{3^4}\right) + n^5 = 3^3 T\left(\frac{n}{3^3}\right) + \left(\frac{n^5}{3^8}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
