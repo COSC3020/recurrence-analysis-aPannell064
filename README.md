@@ -27,6 +27,60 @@ function mystery(n) {
 }
 ```
 
-Add your answer to this markdown file. [This
-page](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
-might help with the notation for mathematical expressions.
+### Recurrence Relation
+
+At the beginning of the function, there is a check for the base case ($n \le 1$). This just
+causes a return statement, meaning $T(1) = 1$ for $n \le 1$
+
+When n is greater than 1, the function calls itself with n/3. It declares and intiializes a variable
+to 0, which doesn't affect the asymptotic complexity, then makes another call to itself with n/3. Next, 
+there are three nested for loops. The first iterates by 1 from 0 to $n^2$. The next loop iterates by 1 
+from 0 to $n$. The inner-most loop iterates by 1 from 0 to $n^2$. The only thing this loop does is 
+increment the previosuly initialized variable, which does not affect the asymptotic complexity. Finally 
+there is another recursive call with a value of n/3. Therefore, ignoring constants, when n is greater 
+than 1, we have:
+
+$T(n) = T(\frac{n}{3}) + T(\frac{n}{3}) + n^2 \cdot n \cdot n^2 + T(\frac{n}{3}) = 3T(\frac{n}{3}) + n^5$
+
+This gives us a final recurrence relation of:
+
+$$ T(n) =
+    \begin{cases}
+        1 & n \leq 1\\
+        3 T\left(\frac{n}{3}\right) + n^5 & n > 1
+    \end{cases}
+$$
+
+### Time Complexity
+
+#### Expand the Relation
+
+$3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\frac{n}{3}\right)^5) + n^5 = 3^2 T\left(\frac{n}{3^2}\right) + 
+\left(\frac{n^5}{3^4}\right) + n^5 = 3^3 T\left(\frac{n}{3^3}\right) + \left(\frac{n^5}{3^8}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
+
+#### Simplify
+
+$3^i T\left(\frac{n}{3^i}\right) + n^5\displaystyle\sum_{k=0} ^{i-1}{\left(\frac{1}{3}\right)^{4k}}$
+
+#### Solve
+
+Let $i = log_3{n}$:
+
+$3^{log_3{n}} T\left(\frac{n}{3^{log_3{n}}}\right) + n^5\displaystyle\sum_{k=0} ^{log_3{n}-1}{\left(\frac{1}{3}\right)^{4k}} 
+= n T\left(\frac{n}{n}\right) + n^5 \cdot \frac{1 - \left(\frac{1}{3^4}\right)^{log_3{n}-1}}{1 - \frac{1}{3^4}} 
+= nT(1) + n^5 \cdot \frac{1 - \frac{3^4}{n^4}}{1 - \frac{1}{3^4}} = n + \frac{n^5 - \frac{3^4n^5}{n^4}}{1 - \frac{1}{3^4}} 
+= n + \frac{n^5 - 3^4n}{1 - \frac{1}{3^4}}$
+
+#### Conclusion
+
+Because only the fastest growing term is relevant asymptotically, we have a final complexity of:
+
+$\Theta(n^5)$
+
+## Extra Help
+
+"I certify that I have listed all sources used to complete this exercise, 
+including the use of any Large Language Models. All of the work is my own, 
+except where stated otherwise. I am aware that plagiarism carries severe 
+penalties and that if plagiarism is suspected, charges may be filed against 
+me without prior notice."
