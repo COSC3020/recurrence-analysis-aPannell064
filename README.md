@@ -53,6 +53,11 @@ $$
 
 ### Time Complexity
 
-#### Expand the relation
+#### Expand the Relation
 
 $3 T\left(\frac{n}{3}\right) + n^5 = 3(3T\left(\frac{n}{3^2}\right) + \left(\frac{n}{3}\right)^5) + n^5 = 3^2 T\left(\frac{n}{3^2}\right) + \left(\frac{n^5}{3^4}\right) + n^5 = 3^3 T\left(\frac{n}{3^3}\right) + \left(\frac{n^5}{3^8}\right) + \left(\frac{n^5}{3^4}\right) + n^5$
+
+#### Simplify
+
+$3^i T\left(\frac{n}{3^i}\right) + n^5\displaystyle\sum_{k=0} ^{i-1}{(\frac{1}{3})^{4k}}$
+
